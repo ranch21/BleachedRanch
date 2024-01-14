@@ -7,18 +7,10 @@
 ![](https://img.shields.io/badge/daily%20commit-yes-blue?style=flat-square)
 ![](https://img.shields.io/discord/620600892718055434?style=flat-square)
 
-Obama approved Minecraft utility mod for Fabric 1.18 and 1.19.
+Ranch approved Minecraft utility mod for Fabric 1.18 and 1.19.
 
 > Website: https://bleachhack.org/  
-> Discord: https://bleachhack.org/discord
-
-## Showcase
-<details>
- <summary>Images</summary>
-
- ![](https://res.bleachhack.org/images/ClickguiShowcase.jpg)
-
- ![](https://res.bleachhack.org/images/RenderShowcase.jpg)
+> Discord: @mynameisjeffito
 
 </details>
 
@@ -27,25 +19,12 @@ Obama approved Minecraft utility mod for Fabric 1.18 and 1.19.
 
 Follow the Instructions on the [download page](https://bleachhack.org/downloads.html).
 
-### For (200 IQ) developers
+### For (2000 IQ) developers
 
 Download the branch with the version you want to work on.  
 Start A Command Prompt/Terminal in the main folder.  
-Generate the needed files for your preferred IDE.  
+Generate the needed files for your preferred IDE (intelliJ).  
 
-***Eclipse***
-
-  On Windows:
-  > gradlew genSources eclipse
-  
-  On Linux:
-  > chmod +x ./gradlew  
-  >./gradlew genSources eclipse
-
-  Start a new workspace in eclipse.
-  Click File > Import... > Gradle > Gradle Project.
-  Select the Main folder.
-  
 ***IntelliJ***
 
   On Windows:
@@ -59,11 +38,6 @@ Generate the needed files for your preferred IDE.
   Select build.gradle in the main folder.
   Select Open as Project.
 
-***Other IDE's***
-
-  Use [this link](https://fabricmc.net/wiki/tutorial:setup) for more information.
-  It should be pretty similar to the eclipse and idea setup.
-  
 ###### *To get the source code of Pre-1.17 versions, use [this](https://github.com/BleachDev/BleachHack/tree/de55562e94) commit and select the folder of the version you want.*
 
 ## Recommended Mods
