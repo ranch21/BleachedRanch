@@ -46,6 +46,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import java.util.Random;
 
 public class UI extends Module {
 
@@ -68,7 +69,7 @@ public class UI extends Module {
 						new SettingToggle("InnerLine", true).withDesc("Adds an extra line to the front of the module list."),
 						new SettingToggle("OuterLine", false).withDesc("Adds an outer line to the module list."),
 						new SettingToggle("Fill", true).withDesc("Adds a black fill behind the module list."),
-						new SettingToggle("Watermark", true).withDesc("Adds the BleachHack watermark to the module list.").withChildren(
+						new SettingToggle("Watermark", true).withDesc("Adds the BleachedRanch watermark to the module list.").withChildren(
 								new SettingMode("Mode", "New", "Old").withDesc("The watermark type.")),
 						new SettingSlider("HueBright", 0, 1, 1, 2).withDesc("The hue of the rainbow."),
 						new SettingSlider("HueSat", 0, 1, 0.5, 2).withDesc("The saturation of the rainbow."),
@@ -99,7 +100,7 @@ public class UI extends Module {
 						() -> getSetting(0).asToggle().getState(),
 						this::getModuleListSize,
 						this::drawModuleList)
-				);
+		);
 
 		// Info
 		container.windows.put("coords",
@@ -107,49 +108,49 @@ public class UI extends Module {
 						() -> getSetting(3).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(coordsText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, coordsText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("fps",
 				new UIWindow(new Position("l", 1, "coords", 0), container,
 						() -> getSetting(1).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(fpsText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, fpsText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("ping",
 				new UIWindow(new Position("l", 1, "fps", 0), container,
 						() -> getSetting(2).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(pingText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, pingText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("tps",
 				new UIWindow(new Position("l", 1, "ping", 0), container,
 						() -> getSetting(4).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(tpsText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, tpsText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("durability",
 				new UIWindow(new Position(0.2, 0.9), container,
 						() -> getSetting(5).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(durabilityText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, durabilityText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("server",
 				new UIWindow(new Position(0.2, 0.85, "durability", 0), container,
 						() -> getSetting(6).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(serverText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, serverText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		container.windows.put("timestamp",
 				new UIWindow(new Position(0.2, 0.8, "server", 0), container,
 						() -> getSetting(7).asToggle().getState(),
 						() -> new int[] { mc.textRenderer.getWidth(timestampText) + 2, 10 },
 						(ms, x, y) -> mc.textRenderer.drawWithShadow(ms, timestampText, x + 1, y + 1, 0xa0a0a0))
-				);
+		);
 
 		// Players
 		container.windows.put("players",
@@ -157,7 +158,7 @@ public class UI extends Module {
 						() -> getSetting(8).asToggle().getState(),
 						this::getPlayerSize,
 						this::drawPlayerList)
-				);
+		);
 
 		// Armor
 		container.windows.put("armor",
@@ -165,7 +166,7 @@ public class UI extends Module {
 						() -> getSetting(9).asToggle().getState(),
 						this::getArmorSize,
 						this::drawArmor)
-				);
+		);
 
 		// Lag-Meter
 		container.windows.put("lagmeter",
@@ -173,7 +174,7 @@ public class UI extends Module {
 						() -> getSetting(10).asToggle().getState(),
 						this::getLagMeterSize,
 						this::drawLagMeter)
-				);
+		);
 
 		// Inventory
 		container.windows.put("inventory",
@@ -181,7 +182,7 @@ public class UI extends Module {
 						() -> getSetting(11).asToggle().getState(),
 						this::getInventorySize,
 						this::drawInventory)
-				);
+		);
 	}
 
 	@BleachSubscribe
@@ -201,7 +202,7 @@ public class UI extends Module {
 			if (watermarkMode == 0) {
 				moduleListText.add(0, BleachHack.watermark.getText().append(Text.literal(" " + BleachHack.VERSION).styled(s -> s.withColor(TextColor.fromRgb(0xf0f0f0)))));
 			} else {
-				moduleListText.add(0, Text.literal("\u00a7a> BleachHack " + BleachHack.VERSION));
+				moduleListText.add(0, Text.literal("\u00a7a> BleachedRanch " + BleachHack.VERSION));
 			}
 		}
 
@@ -324,9 +325,9 @@ public class UI extends Module {
 				.filter(e -> e != mc.player)
 				.map(e -> mc.textRenderer.getWidth(
 						e.getDisplayName().getString()
-						+ " | "
-						+ e.getBlockPos().getX() + " " + e.getBlockPos().getY() + " " + e.getBlockPos().getZ()
-						+ " (" + Math.round(mc.player.distanceTo(e)) + "m)"))
+								+ " | "
+								+ e.getBlockPos().getX() + " " + e.getBlockPos().getY() + " " + e.getBlockPos().getZ()
+								+ " (" + Math.round(mc.player.distanceTo(e)) + "m)"))
 				.collect(Collectors.toList());
 
 		nameLengths.add(mc.textRenderer.getWidth("Players:"));
@@ -347,14 +348,14 @@ public class UI extends Module {
 
 			String text =
 					e.getDisplayName().getString()
-					+ " \u00a77|\u00a7r " +
-					e.getBlockPos().getX() + " " + e.getBlockPos().getY() + " " + e.getBlockPos().getZ()
-					+ " (" + dist + "m)";
+							+ " \u00a77|\u00a7r " +
+							e.getBlockPos().getX() + " " + e.getBlockPos().getY() + " " + e.getBlockPos().getZ()
+							+ " (" + dist + "m)";
 
 			int playerColor =
 					0xff000000 |
-					((255 - (int) Math.min(dist * 2.1, 255) & 0xFF) << 16) |
-					(((int) Math.min(dist * 4.28, 255) & 0xFF) << 8);
+							((255 - (int) Math.min(dist * 2.1, 255) & 0xFF) << 16) |
+							(((int) Math.min(dist * 4.28, 255) & 0xFF) << 8);
 
 			mc.textRenderer.drawWithShadow(matrices, text, x + 1, y + 1 + count * 10, playerColor);
 			count++;
@@ -407,7 +408,7 @@ public class UI extends Module {
 
 			matrices.push();
 			matrices.translate(0, 0, /*mc.getItemRenderer().zOffset +*/ 200);
-			
+
 			if (is.getCount() > 1) {
 				matrices.push();
 				String s = Integer.toString(is.getCount());
@@ -440,7 +441,7 @@ public class UI extends Module {
 					DrawableHelper.fill(matrices, curX + 15, curY + 2, curX + 16, curY + 2 + barLength, durcolor);
 				}
 			}
-			
+
 			matrices.pop();
 		}
 	}

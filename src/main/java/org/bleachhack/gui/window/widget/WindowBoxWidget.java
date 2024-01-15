@@ -1,5 +1,6 @@
 package org.bleachhack.gui.window.widget;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.window.Window;
 
 import net.minecraft.client.util.math.MatrixStack;
@@ -16,7 +17,8 @@ public class WindowBoxWidget extends WindowWidget {
 	}
 
 	public WindowBoxWidget(int x1, int y1, int x2, int y2, int fill) {
-		this(x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, fill);
+		// this(x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, fill);
+		this(x1, y1, x2, y2, Pallete.redT, Pallete.redT, fill);
 	}
 
 	public WindowBoxWidget(int x1, int y1, int x2, int y2, int top, int bottom, int fill) {

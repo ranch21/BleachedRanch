@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.module.Module;
 import org.bleachhack.module.ModuleManager;
 import org.bleachhack.module.mods.ClickGui;
@@ -65,7 +66,7 @@ public class ModuleWindow extends ClickGuiWindow {
 		int curY = 0;
 		for (Entry<Module, Boolean> m : mods.entrySet()) {
 			if (mouseOver(x, y + curY, x + len, y + 12 + curY)) {
-				DrawableHelper.fill(matrices, x, y + curY, x + len, y + 12 + curY, 0x70303070);
+				DrawableHelper.fill(matrices, x, y + curY, x + len, y + 12 + curY, Pallete.butt); // 0x70303070
 			}
 
 			// If they match: Module gets marked red
@@ -99,7 +100,7 @@ public class ModuleWindow extends ClickGuiWindow {
 						tooltip = s.getTooltip(this, x + 1, y + curY, len - 1);
 					}
 
-					DrawableHelper.fill(matrices, x + 1, y + curY, x + 2, y + curY + s.getHeight(len), 0xff8070b0);
+					DrawableHelper.fill(matrices, x + 1, y + curY, x + 2, y + curY + s.getHeight(len), Pallete.start); // 0xff8070b0
 
 					curY += s.getHeight(len);
 				}

@@ -1,5 +1,6 @@
 package org.bleachhack.gui.window.widget;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.window.Window;
 
 import net.minecraft.client.gui.DrawableHelper;
@@ -34,15 +35,15 @@ public class WindowScrollbarWidget extends WindowWidget {
 
 		//System.out.println(getScrollbarHeight());
 		if (pos != null) {
-			int color = mouseX >= pos[0] && mouseX <= pos[0] + pos[2] && mouseY >= pos[1] && mouseY <= pos[1] + pos[3] ? 0x906060ff : 0x9040409f;
+			int color = mouseX >= pos[0] && mouseX <= pos[0] + pos[2] && mouseY >= pos[1] && mouseY <= pos[1] + pos[3] ? Pallete.butt : Pallete.buttD; // 0x906060ff : 0x9040409f
 
 			Window.fill(matrices, pos[0], pos[1], pos[0] + pos[2], pos[1] + pos[3], color);
 
 			int middleY = pos[1] + (int) (pos[3] / 2d);
 
-			DrawableHelper.fill(matrices, pos[0] + 3, middleY - 3, pos[0] + 7, middleY - 2, 0xff7060ff);
-			DrawableHelper.fill(matrices, pos[0] + 3, middleY, pos[0] + 7, middleY + 1, 0xff7060ff);
-			DrawableHelper.fill(matrices, pos[0] + 3, middleY + 3, pos[0] + 7, middleY + 4, 0xff7060ff);
+			DrawableHelper.fill(matrices, pos[0] + 3, middleY - 3, pos[0] + 7, middleY - 2, Pallete.start);
+			DrawableHelper.fill(matrices, pos[0] + 3, middleY, pos[0] + 7, middleY + 1, Pallete.start);
+			DrawableHelper.fill(matrices, pos[0] + 3, middleY + 3, pos[0] + 7, middleY + 4, Pallete.start);
 
 			if (buttonDown) {
 				moveScrollbar(mouseY - lastY);

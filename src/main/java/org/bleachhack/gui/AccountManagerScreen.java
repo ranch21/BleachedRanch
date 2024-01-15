@@ -171,13 +171,13 @@ public class AccountManagerScreen extends WindowScreen {
 
 				boolean hover = getWindow(0).selected && mouseX >= x + 1 && mouseX <= x + listW - (shrink ? 12 : 1) && mouseY >= curY && mouseY <= curY + 27;
 				drawEntry(matrices, accounts.get(c), x + 2, curY + 1, listW - (shrink ? 13 : 3), 26,
-						selected == c ? 0x6090e090 : hover ? 0x60b070f0 : 0x60606090);
+						selected == c ? Pallete.main : hover ? Pallete.butt: Pallete.buttD); // selected == c ? 0x6090e090 : hover ? 0x60b070f0 : 0x60606090);
 
 				if (hover)
 					hovered = c;
 			}
 
-			fill(matrices, x + listW, y + 12, x + listW + 1, y + h - 1, 0xff606090);
+			fill(matrices, x + listW, y + 12, x + listW + 1, y + h - 1, Pallete.start);
 		}
 	}
 
@@ -189,7 +189,7 @@ public class AccountManagerScreen extends WindowScreen {
 			DrawableHelper.fill(matrices,
 					x + 2, y + 2,
 					x + height - 2, y + height - 2,
-					0x60d86ceb);
+					0x60d86ceb); // 0x60d86ceb
 			DrawableHelper.drawTexture(matrices,
 					x + 3, y + 3,
 					(int) (pixelSize * 8), (int) (pixelSize * 8),

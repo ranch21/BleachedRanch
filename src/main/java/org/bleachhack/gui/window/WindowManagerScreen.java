@@ -10,6 +10,7 @@ package org.bleachhack.gui.window;
 
 import java.util.List;
 import org.apache.commons.lang3.tuple.Triple;
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.window.widget.WindowButtonWidget;
 import com.mojang.blaze3d.systems.RenderSystem;
 
@@ -101,7 +102,7 @@ public class WindowManagerScreen extends WindowScreen {
 		private ItemStack item;
 
 		public WindowTabButtonWidget(int x1, int y1, int x2, int y2, String text, ItemStack item, Runnable action) {
-			super(x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, 0x40606090, 0x4fb070f0, text, action);
+			super(x1, y1, x2, y2, Pallete.start, Pallete.end, Pallete.buttD, Pallete.butt, text, action);
 			this.item = item;
 		}
 

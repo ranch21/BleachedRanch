@@ -2,6 +2,8 @@ package org.bleachhack.gui.window.widget;
 
 import org.bleachhack.gui.window.Window;
 
+import org.bleachhack.gui.Pallete;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
@@ -18,11 +20,11 @@ public class WindowButtonWidget extends WindowWidget {
 	public Runnable action;
 
 	public WindowButtonWidget(int x1, int y1, int x2, int y2, String text, Runnable action) {
-		this(x1, y1, x2, y2, 0x60606090, 0x4fb070f0, text, action);
+		this(x1, y1, x2, y2, Pallete.buttD, Pallete.butt, text, action);
 	}
 
 	public WindowButtonWidget(int x1, int y1, int x2, int y2, int colorFill, int colorHoverFill, String text, Runnable action) {
-		this(x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, colorFill, colorHoverFill, text, action);
+		this(x1, y1, x2, y2, Pallete.start, Pallete.end, colorFill, colorHoverFill, text, action);
 	}
 
 	public WindowButtonWidget(int x1, int y1, int x2, int y2, int colorTop, int colorBottom, int colorFill, int colorHoverFill, String text, Runnable action) {

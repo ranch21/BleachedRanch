@@ -16,6 +16,8 @@ import org.bleachhack.gui.window.widget.WindowWidget;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import org.bleachhack.gui.Pallete;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
@@ -113,15 +115,15 @@ public class Window {
 
 	protected void drawBackground(MatrixStack matrices, int mouseX, int mouseY, TextRenderer textRend) {
 		/* background */
-		DrawableHelper.fill(matrices, x1, y1 + 1, x1 + 1, y2 - 1, 0xff6060b0);
-		horizontalGradient(matrices, x1 + 1, y1, x2 - 1, y1 + 1, 0xff6060b0, 0xff8070b0);
-		DrawableHelper.fill(matrices, x2 - 1, y1 + 1, x2, y2 - 1, 0xff8070b0);
-		horizontalGradient(matrices, x1 + 1, y2 - 1, x2 - 1, y2, 0xff6060b0, 0xff8070b0);
+		DrawableHelper.fill(matrices, x1, y1 + 1, x1 + 1, y2 - 1, Pallete.start);
+		horizontalGradient(matrices, x1 + 1, y1, x2 - 1, y1 + 1, Pallete.start, Pallete.end);
+		DrawableHelper.fill(matrices, x2 - 1, y1 + 1, x2, y2 - 1, Pallete.end);
+		horizontalGradient(matrices, x1 + 1, y2 - 1, x2 - 1, y2, Pallete.start, Pallete.end);
 
-		DrawableHelper.fill(matrices, x1 + 1, y1 + 12, x2 - 1, y2 - 1, 0x90606090);
+		DrawableHelper.fill(matrices, x1 + 1, y1 + 12, x2 - 1, y2 - 1, Pallete.mainT);
 
 		/* title bar */
-		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, (selected ? 0xff6060b0 : 0xff606060), (selected ? 0xff8070b0 : 0xffa0a0a0));
+		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, (selected ? Pallete.main : Pallete.main), (selected ? Pallete.main : Pallete.main));
 
 		/* buttons */
 		textRend.draw(matrices, "x", x2 - 10, y1 + 3, 0);
@@ -188,11 +190,11 @@ public class Window {
 	}
 
 	public static void fill(MatrixStack matrices, int x1, int y1, int x2, int y2) {
-		fill(matrices, x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, 0x00000000);
+		fill(matrices, x1, y1, x2, y2, Pallete.start, Pallete.end, 0x00000000);
 	}
 
 	public static void fill(MatrixStack matrices, int x1, int y1, int x2, int y2, int fill) {
-		fill(matrices, x1, y1, x2, y2, 0xff6060b0, 0xff8070b0, fill);
+		fill(matrices, x1, y1, x2, y2, Pallete.start, Pallete.end, fill);
 	}
 
 	public static void fill(MatrixStack matrices, int x1, int y1, int x2, int y2, int colTop, int colBot, int colFill) {

@@ -1,5 +1,6 @@
 package org.bleachhack.gui.window.widget;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.window.Window;
 
 import net.minecraft.client.MinecraftClient;
@@ -33,7 +34,8 @@ public class WindowCheckboxWidget extends WindowWidget {
 
 		int x = windowX + x1;
 		int y = windowY + y1;
-		int color = mouseX >= x && mouseX <= x + 10 && mouseY >= y && mouseY <= y + 10 ? 0x906060ff : 0x9040409f;
+		// int color = mouseX >= x && mouseX <= x + 10 && mouseY >= y && mouseY <= y + 10 ? 0x906060ff : 0x9040409f;
+		int color = mouseX >= x && mouseX <= x + 10 && mouseY >= y && mouseY <= y + 10 ? Pallete.blueT : Pallete.blueT;
 
 		Window.fill(matrices, x, y, x + 11, y + 11, color);
 

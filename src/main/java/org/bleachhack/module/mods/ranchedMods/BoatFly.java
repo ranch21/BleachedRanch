@@ -9,6 +9,7 @@ import org.bleachhack.module.Module;
 import org.bleachhack.module.ModuleCategory;
 import org.bleachhack.setting.module.SettingMode;
 import org.bleachhack.setting.module.SettingSlider;
+import org.bleachhack.setting.module.SettingToggle;
 import org.joml.Vector3f;
 
 import static org.bleachhack.util.Max2.max2;
@@ -18,8 +19,8 @@ public class BoatFly extends Module {
 	public BoatFly() {
 		super("BoatFly", KEY_UNBOUND, ModuleCategory.RANCH, "Fly, but in a boat.",
 				new SettingSlider("Speed", 0, 5, 1, 1).withDesc("Flight speed."),
-				new SettingMode("Mode", "Normal", "Axis").withDesc("Normal is more slippery but fun"),
-				new SettingMode("AntiKick", "Off", "On").withDesc("To bypass \"you have been kicked for flying\""));
+				new SettingMode("Mode", "Normal", "Slippery").withDesc("slippery is fun (but unusable)"),
+				new SettingToggle("AntiKick", false).withDesc("To bypass \"you have been kicked for flying\""));
 	}
 
 	@Override
@@ -53,21 +54,20 @@ public class BoatFly extends Module {
 			else {
 				velY = 0;
 			}
-			if (getSetting(1).asMode().getMode() == 0) {
+			if (getSetting(1).asMode().getMode() == 1) {
 				Vec3d magV = new Vec3d(max2(boat.getVelocity().x, multiplier), 0, max2(boat.getVelocity().z, multiplier));
 				Vec3d multiply = magV.multiply(1.1);
 				boat.setVelocity(multiply.x, velY * multiplier, multiply.z);
 			} else {
 				boat.setVelocity(outV.x * multiplier, velY * (multiplier - .5), outV.z * multiplier);
 			}
-			if (getSetting(2).asMode().getMode() == 1) {
+			if (getSetting(2).asToggle().getState()) {
 				kickTimer--;
 			}
 
 			if (kickTimer <= 0) {
 				boat.setVelocity(boat.getVelocity().x, boat.getVelocity().y - .5, boat.getVelocity().z);
 				kickTimer = 40;
-				//fix falling boat after few seconds of flying
 			}
 		}
 	}

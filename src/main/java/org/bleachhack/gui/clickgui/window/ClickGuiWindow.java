@@ -8,6 +8,7 @@
  */
 package org.bleachhack.gui.clickgui.window;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.window.Window;
 
 import net.minecraft.client.MinecraftClient;
@@ -43,19 +44,19 @@ public abstract class ClickGuiWindow extends Window {
 
 	protected void drawBackground(MatrixStack matrices, int mouseX, int mouseY, TextRenderer textRend) {
 		/* background */
-		DrawableHelper.fill(matrices, x1, y1 + 1, x1 + 1, y2 - 1, 0xff6060b0);
-		horizontalGradient(matrices, x1 + 1, y1, x2 - 1, y1 + 1, 0xff6060b0, 0xff8070b0);
-		DrawableHelper.fill(matrices, x2 - 1, y1 + 1, x2, y2 - 1, 0xff8070b0);
-		horizontalGradient(matrices, x1 + 1, y2 - 1, x2 - 1, y2, 0xff6060b0, 0xff8070b0);
+		DrawableHelper.fill(matrices, x1, y1 + 1, x1 + 1, y2 - 1, Pallete.start);
+		horizontalGradient(matrices, x1 + 1, y1, x2 - 1, y1 + 1, Pallete.start, Pallete.end);
+		DrawableHelper.fill(matrices, x2 - 1, y1 + 1, x2, y2 - 1, Pallete.end);
+		horizontalGradient(matrices, x1 + 1, y2 - 1, x2 - 1, y2, Pallete.start, Pallete.end);
 
-		DrawableHelper.fill(matrices, x1 + 1, y1 + 12, x2 - 1, y2 - 1, 0x90606090);
+		DrawableHelper.fill(matrices, x1 + 1, y1 + 12, x2 - 1, y2 - 1, Pallete.mainT);
 
 		/* title bar */
-		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, 0xff6060b0, 0xff8070b0);
+		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, Pallete.mainD, Pallete.mainD2);
 
 		/* +/- text */
 		textRend.draw(matrices, hiding ? "+" : "_", x2 - 10, y1 + (hiding ? 4 : 2), 0x000000);
-		textRend.draw(matrices, hiding ? "+" : "_", x2 - 11, y1 + (hiding ? 3 : 1), 0xffffff);
+		textRend.draw(matrices, hiding ? "+" : "_", x2 - 11, y1 + (hiding ? 3 : 1), 0xffffff); //0xffffff
 	}
 
 	public void render(MatrixStack matrices, int mouseX, int mouseY) {

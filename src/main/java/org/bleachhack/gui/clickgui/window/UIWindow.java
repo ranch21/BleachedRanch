@@ -19,6 +19,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
+import org.bleachhack.gui.Pallete;
 
 // this is worse than dispenser32k
 // gonna have no idea what any of this does in 2 weeks
@@ -195,7 +196,7 @@ public class UIWindow extends ClickGuiWindow {
 				(position.getAttachments().containsValue(0) ? 0xff60b060 : 0xff6060b0),
 				(position.getAttachments().containsValue(0) ? 0xff80c060 : 0xff8070b0));*/
 
-		DrawableHelper.fill(matrices, x1, y1, x2, y2, 0x90606090);
+		DrawableHelper.fill(matrices, x1, y1, x2, y2, Pallete.mainT); // 0x90606090
 	}
 
 	public void mouseClicked(double mouseX, double mouseY, int button) {

@@ -11,7 +11,9 @@ package org.bleachhack.module;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
+import net.minecraft.util.math.MathHelper;
 import org.bleachhack.BleachHack;
 import org.bleachhack.setting.module.ModuleSetting;
 import org.bleachhack.setting.module.SettingKey;

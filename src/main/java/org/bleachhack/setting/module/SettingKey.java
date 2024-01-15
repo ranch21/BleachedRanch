@@ -8,6 +8,7 @@
  */
 package org.bleachhack.setting.module;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.clickgui.window.ModuleWindow;
 import org.bleachhack.module.Module;
 import org.bleachhack.setting.SettingDataHandlers;
@@ -29,7 +30,7 @@ public class SettingKey extends ModuleSetting<Integer> {
 	@Override
 	public void render(ModuleWindow window, MatrixStack matrices, int x, int y, int len) {
 		if (window.mouseOver(x, y, x + len, y + 12)) {
-			DrawableHelper.fill(matrices, x + 1, y, x + len, y + 12, 0x70303070);
+			DrawableHelper.fill(matrices, x + 1, y, x + len, y + 12, Pallete.butt); // 0x70303070
 		}
 		
 		if (window.keyDown >= 0 && window.keyDown != GLFW.GLFW_KEY_ESCAPE && window.mouseOver(x, y, x + len, y + 12)) {

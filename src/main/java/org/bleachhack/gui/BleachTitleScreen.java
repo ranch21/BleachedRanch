@@ -69,7 +69,7 @@ public class BleachTitleScreen extends WindowScreen {
 		addWindow(new Window(width / 8,
 				height / 8,
 				width - width / 8,
-				height - height / 8 + 2, "BleachHack", new ItemStack(Items.MUSIC_DISC_CAT)));
+				height - height / 8 + 2, "BleachedRanch", new ItemStack(Items.MUSIC_DISC_CAT)));
 
 		int w = getWindow(0).x2 - getWindow(0).x1;
 		int h = getWindow(0).y2 - getWindow(0).y1;
@@ -107,7 +107,7 @@ public class BleachTitleScreen extends WindowScreen {
 					MutableText bhText = Text.literal("");
 
 					int i = 0;
-					for (char c: "BleachHack".toCharArray()) {
+					for (char c: "BleachedRanch".toCharArray()) {
 						int fi = i++;
 						bhText.append(
 								Text.literal(String.valueOf(c)).styled(s -> s.withColor(TextColor.fromRgb(UI.getRainbowFromSettings(fi)))));
@@ -117,10 +117,10 @@ public class BleachTitleScreen extends WindowScreen {
 				}));
 
 		// Version Text
-		getWindow(0).addWidget(new WindowTextWidget(BleachHack.VERSION, true, WindowTextWidget.TextAlign.MIDDLE, 1.5f, w / 2, h / 4 - 6, 0xffc050));
+		getWindow(0).addWidget(new WindowTextWidget(BleachHack.VERSION, true, WindowTextWidget.TextAlign.MIDDLE, 1.5f, w / 2, h / 4, 0xffc050));
 
 		// Splash
-		getWindow(0).addWidget(new WindowTextWidget(Text.empty(), true, WindowTextWidget.TextAlign.MIDDLE, 2f, -20f, w / 2 + 80, h / 4 + 6, 0xffff00)
+		getWindow(0).addWidget(new WindowTextWidget(Text.empty(), true, WindowTextWidget.TextAlign.MIDDLE, 2f, -20f, w / 2 + 110, h / 4 + 6, 0xffff00)
 				.withRenderEvent((widget, ms, wx, wy) -> {
 					if (splash != null) {
 						WindowTextWidget windgetText = (WindowTextWidget) widget;

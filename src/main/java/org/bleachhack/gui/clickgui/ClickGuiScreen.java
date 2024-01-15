@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.clickgui.window.ClickGuiWindow;
 import org.bleachhack.gui.clickgui.window.ClickGuiWindow.Tooltip;
 import org.bleachhack.gui.window.Window;
@@ -102,9 +103,9 @@ public abstract class ClickGuiScreen extends WindowScreen {
 		}
 		
 		Window.fill(matrices, width / 2 - 50, -1, width / 2 - 2, 12,
-				mouseX >= width / 2 - 50 && mouseX <= width / 2 - 2 && mouseY >= 0 && mouseY <= 12 ? 0x60b070f0 : 0x60606090);
+				mouseX >= width / 2 - 50 && mouseX <= width / 2 - 2 && mouseY >= 0 && mouseY <= 12 ? Pallete.main : Pallete.mainD2);
 		Window.fill(matrices, width / 2 + 2, -1, width / 2 + 50, 12,
-				mouseX >= width / 2 + 2 && mouseX <= width / 2 + 50 && mouseY >= 0 && mouseY <= 12 ? 0x60b070f0 : 0x60606090);
+				mouseX >= width / 2 + 2 && mouseX <= width / 2 + 50 && mouseY >= 0 && mouseY <= 12 ? Pallete.main : Pallete.mainD2);
 
 		drawCenteredTextWithShadow(matrices, textRenderer, "Modules", width / 2 - 26, 2, 0xf0f0f0);
 		drawCenteredTextWithShadow(matrices, textRenderer, "UI", width / 2 + 26, 2, 0xf0f0f0);

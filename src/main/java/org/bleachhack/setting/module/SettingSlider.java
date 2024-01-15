@@ -11,6 +11,7 @@ package org.bleachhack.setting.module;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.clickgui.window.ModuleWindow;
 import org.bleachhack.gui.window.Window;
 import org.bleachhack.setting.SettingDataHandlers;
@@ -50,12 +51,12 @@ public class SettingSlider extends ModuleSetting<Double> {
 	public void render(ModuleWindow window, MatrixStack matrices, int x, int y, int len) {
 		boolean mo = window.mouseOver(x, y, x + len, y + 12);
 		if (mo) {
-			DrawableHelper.fill(matrices, x + 1, y, x + len, y + 12, 0x70303070);
+			DrawableHelper.fill(matrices, x + 1, y, x + len, y + 12, Pallete.buttD);
 		}
 
 		int pixels = (int) Math.round(MathHelper.clamp(len * ((getValue() - min) / (max - min)), 0, len));
 		Window.horizontalGradient(matrices, x + 1, y, x + pixels, y + 12,
-				mo ? 0xf03078b0 : 0xf03080a0, mo ? 0xf02068c0 : 0xf02070b0);
+				mo ? Pallete.butt : Pallete.buttD, mo ? Pallete.butt : Pallete.buttD); // 0xf03078b0 : 0xf03080a0, mo ? 0xf02068c0 : 0xf02070b0
 
 		MinecraftClient.getInstance().textRenderer.drawWithShadow(matrices,
 				getName() + ": " + (decimals == 0 ? Integer.toString(getValueInt()) : getValue()),

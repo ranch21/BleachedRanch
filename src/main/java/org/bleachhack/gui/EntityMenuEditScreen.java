@@ -94,7 +94,7 @@ public class EntityMenuEditScreen extends WindowScreen {
 			insertStartString = null;
 
 			int seperator = (int) (x + w / 3.25);
-			fill(matrices, seperator, y, seperator + 1, y + h, 0xff606090);
+			fill(matrices, seperator, y, seperator + 1, y + h, Pallete.blueT); // 0xff606090
 
 			textRenderer.drawWithShadow(matrices, "Interactions:", x + 6, y + 5, 0xffffff);
 

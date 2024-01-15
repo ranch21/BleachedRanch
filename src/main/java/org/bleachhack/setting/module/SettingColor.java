@@ -8,6 +8,7 @@
  */
 package org.bleachhack.setting.module;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.clickgui.window.ModuleWindow;
 import org.bleachhack.gui.window.Window;
 import org.bleachhack.setting.SettingDataHandlers;
@@ -37,7 +38,7 @@ public class SettingColor extends ModuleSetting<float[]> {
 		float[] hsv = getValue();
 		int[] rgb = hsvToRgb(hsv[0], 1f, 1f);
 
-		Window.fill(matrices, sx - 1, sy - 1, ex + 1, ey + 1, 0xff8070b0, 0xff6060b0, 0x00000000);
+		Window.fill(matrices, sx - 1, sy - 1, ex + 1, ey + 1, Pallete.start, Pallete.end, 0x00000000); // Window.fill(matrices, sx - 1, sy - 1, ex + 1, ey + 1, 0xff8070b0, 0xff6060b0, 0x00000000);
 
 		DrawableHelper.fill(matrices, sx, sy, ex, ey, -1);
 
@@ -86,7 +87,7 @@ public class SettingColor extends ModuleSetting<float[]> {
 		// Hue bar
 		sx = ex + 5;
 		ex = ex + 12;
-		Window.fill(matrices, sx - 1, sy - 1, ex + 1, ey + 1, 0xff8070b0, 0xff6060b0, 0x00000000);
+		Window.fill(matrices, sx - 1, sy - 1, ex + 1, ey + 1, Pallete.start, Pallete.end, 0x00000000);
 
 		for (int i = sy; i < ey; i++) {
 			float curHue = (float) (i - sy) / (ey - sy);
