@@ -52,7 +52,7 @@ public abstract class ClickGuiWindow extends Window {
 		DrawableHelper.fill(matrices, x1 + 1, y1 + 12, x2 - 1, y2 - 1, Pallete.mainT);
 
 		/* title bar */
-		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, Pallete.mainD, Pallete.mainD2);
+		horizontalGradient(matrices, x1 + 1, y1 + 1, x2 - 1, y1 + 12, Pallete.mainD2, Pallete.mainD2);
 
 		/* +/- text */
 		textRend.draw(matrices, hiding ? "+" : "_", x2 - 10, y1 + (hiding ? 4 : 2), 0x000000);

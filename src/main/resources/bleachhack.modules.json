@@ -2,6 +2,7 @@
   "package": "org.bleachhack.module.mods",
   "modules": [
     "ranchedMods.BoatFly",
+    "ranchedMods.MovelessMove",
     "AirPlace",
     "Ambience",
     "AntiChunkBan",

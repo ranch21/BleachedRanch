@@ -19,7 +19,7 @@ public class BoatFly extends Module {
 	public BoatFly() {
 		super("BoatFly", KEY_UNBOUND, ModuleCategory.RANCH, "Fly, but in a boat.",
 				new SettingSlider("Speed", 0, 5, 1, 1).withDesc("Flight speed."),
-				new SettingMode("Mode", "Normal", "Slippery").withDesc("slippery is fun (but unusable)"),
+				new SettingMode("Mode", "Normal", "Slippery").withDesc("Slippery is fun (but unusable)"),
 				new SettingToggle("AntiKick", false).withDesc("To bypass \"you have been kicked for flying\""));
 	}
 

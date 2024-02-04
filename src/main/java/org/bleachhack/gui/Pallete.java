@@ -1,9 +1,9 @@
 package org.bleachhack.gui;
 
 public class Pallete {
-    public static int main = 0xff17d323;
-    public static int mainD = 0xff0fa865;
-    public static int mainD2 = 0xff088e42;
+    public static int main = 0xff17d323; // 25, 211, 35
+    public static int mainD = 0xff0fa865; // 15, 168, 101
+    public static int mainD2 = 0xff088e42; // 0xff088e42
     public static int mainT = 0x7f097c4b;// main
 
     public static int butt = 0xff5bb517;
