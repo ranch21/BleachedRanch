@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.bleachhack.event.events.EventTick;
+import org.bleachhack.event.events.EventWorldRender;
 import org.bleachhack.eventbus.BleachSubscribe;
 import org.bleachhack.module.Module;
 import org.bleachhack.module.ModuleCategory;
-import org.bleachhack.setting.module.SettingMode;
-import org.bleachhack.setting.module.SettingRotate;
-import org.bleachhack.setting.module.SettingSlider;
-import org.bleachhack.setting.module.SettingToggle;
+import org.bleachhack.setting.module.*;
+import org.bleachhack.util.render.Renderer;
+import org.bleachhack.util.render.color.QuadColor;
 import org.bleachhack.util.world.EntityUtils;
 import org.bleachhack.util.world.WorldUtils;
 
@@ -59,7 +59,12 @@ public class Killaura extends Module {
 				new SettingToggle("Raycast", true).withDesc("Only attacks if you can see the target."),
 				new SettingToggle("1.9 Delay", false).withDesc("Uses the 1.9+ delay between hits."),
 				new SettingSlider("Range", 0, 6, 4.25, 2).withDesc("Attack range."),
-				new SettingSlider("CPS", 0, 20, 8, 0).withDesc("Attack CPS if 1.9 delay is disabled."));
+				new SettingSlider("CPS", 0, 20, 8, 0).withDesc("Attack CPS if 1.9 delay is disabled."),
+				new SettingToggle("Render", true).withDesc("Renders the targets").withChildren(
+						new SettingColor("Color", 170, 100, 100),
+						new SettingSlider("Transparency", 0, 255, 120, 0),
+						new SettingToggle("Outline", true)
+				));
 	}
 
 	@BleachSubscribe
@@ -89,12 +94,27 @@ public class Killaura extends Module {
 					mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, Mode.STOP_SPRINTING));
 
 				mc.interactionManager.attackEntity(mc.player, e);
+				Renderer.drawBoxOutline(e.getBoundingBox(), QuadColor.single(100, 100, 100, 255), 5);
 				mc.player.swingHand(Hand.MAIN_HAND);
 
 				if (wasSprinting)
 					mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, Mode.START_SPRINTING));
 
 				delay = 0;
+			}
+		}
+	}
+
+	@BleachSubscribe
+	public void onWorldRender(EventWorldRender.Post event) {
+		if (getSetting(13).asToggle().getState()) {
+			for (Entity e: getEntities()) {
+				int[] color = getSetting(13).asToggle().getChild(0).asColor().getRGBArray();
+				int opacity = getSetting(13).asToggle().getChild(1).asSlider().getValueInt();
+				Renderer.drawBoxFill(e.getBoundingBox(), QuadColor.single(color[0], color[1], color[2], opacity));
+				if (getSetting(13).asToggle().getChild(2).asToggle().getState()) {
+					Renderer.drawBoxOutline(e.getBoundingBox(), QuadColor.single(color[0], color[1], color[2], Math.min(opacity + 25, 255)), 5);
+				}
 			}
 		}
 	}

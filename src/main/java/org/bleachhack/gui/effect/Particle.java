@@ -29,7 +29,7 @@ public class Particle {
 		this.y = y;
 		genParticles();
 		lastTick = System.currentTimeMillis();
-		lifespan = rand.nextInt(20);
+		lifespan = rand.nextInt(19) + 1;
 	}
 
 	public void genParticles() {
@@ -40,7 +40,7 @@ public class Particle {
 
 	public void updateParticles() {
 		/* This is here to make it only trigger if a "tick" has passed */
-		if (System.currentTimeMillis() < lastTick + 16)
+		if (System.currentTimeMillis() < lastTick + 16) //16
 			return;
 		lastTick = System.currentTimeMillis();
 
@@ -51,12 +51,15 @@ public class Particle {
 			particles.clear();
 		}
 
-		for (int i = 0; i < particles.size() - 1; i++) {
+		for (int i = 0; i < particles.size() - 0; i++) {
 			int[] pos = particles.get(i);
 			int diffx = pos[0] - x;
-			int diffy = pos[1] - y;
+			//int diffy = pos[1] - y;
 
-			particles.set(i, new int[] { pos[0] + (diffx / tick), pos[1] + (diffy / tick) });
+
+
+			//particles.set(i, new int[] { pos[0] + (diffx / tick), pos[1] + (diffy / tick) });
+			particles.set(i, new int[] { pos[0] + (diffx / tick), pos[1] + (tick - 5) + rand.nextInt(5) });
 		}
 	}
 

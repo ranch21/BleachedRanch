@@ -30,6 +30,7 @@ import org.bleachhack.setting.module.SettingColor;
 import org.bleachhack.setting.module.SettingRotate;
 import org.bleachhack.setting.module.SettingSlider;
 import org.bleachhack.setting.module.SettingToggle;
+import org.bleachhack.util.BleachLogger;
 import org.bleachhack.util.InventoryUtils;
 import org.bleachhack.util.render.Renderer;
 import org.bleachhack.util.render.color.QuadColor;
@@ -70,7 +71,7 @@ public class CrystalAura extends Module {
 						new SettingSlider("MinRatio", 0.5, 6, 2, 1).withDesc("Minimum damage ratio to place a crystal at (Target dmg/Player dmg)."),
 						new SettingSlider("CPT", 1, 10, 2, 0).withDesc("How many crystals to place per tick."),
 						new SettingSlider("Cooldown", 0, 10, 0, 0).withDesc("How many ticks to wait before placing the next batch of crystals."),
-						new SettingColor("Place Color", 178, 178, 255).withDesc("The color of the block you're placing crystals on.")),
+						new SettingColor("Place Color", 132, 255, 157).withDesc("The color of the block you're placing crystals on.")),
 				new SettingToggle("SameTick", false).withDesc("Enables exploding and placing crystals at the same tick."),
 				new SettingRotate(false).withDesc("Rotates to crystals."),
 				new SettingSlider("Range", 0, 6, 4.5, 2).withDesc("Range to place and attack crystals."));

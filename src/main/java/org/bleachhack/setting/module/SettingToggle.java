@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.bleachhack.gui.Pallete;
 import org.bleachhack.gui.clickgui.window.ClickGuiWindow.Tooltip;
 import org.bleachhack.setting.SettingDataHandlers;
 import org.bleachhack.gui.clickgui.window.ModuleWindow;
@@ -52,7 +53,7 @@ public class SettingToggle extends ModuleSetting<Boolean> {
 			}
 
 			if (expanded) {
-				DrawableHelper.fill(matrices, x + 2, y + 12, x + 3, y + getHeight(len) - 1, 0xff8070b0);
+				DrawableHelper.fill(matrices, x + 2, y + 12, x + 3, y + getHeight(len) - 1, Pallete.start);
 
 				int h = y + 12;
 				for (ModuleSetting<?> s : children) {
